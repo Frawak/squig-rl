@@ -3,7 +3,7 @@
 This repository resulted from my dive in Reinforcement Learning on the base of 
 the Learning-to-Run challenge of [osim-rl](https://github.com/stanfordnmbl/osim-rl).
 
-And I intend to further build on it.
+And I intend to further build on it and extend this repo.
 
 Why "Squig"? Well, the osim running environment showed a armless bipedal walker
 and I only know one such creature...
@@ -67,7 +67,7 @@ are runnable on either OS.
 
 ## Acknowledgement
 
-First off, I have to thank organizers and particpants of the [challenge](https://www.crowdai.org/challenges/nips-2017-learning-to-run).
+First off, I have to thank organizers and participants of the [challenge](https://www.crowdai.org/challenges/nips-2017-learning-to-run).
 The exchange throughout it provided an accelerated learning curve.
 
 As a code basis, I chose [keras-rl](https://github.com/keras-rl/keras-rl). At first, 
@@ -75,7 +75,7 @@ it was installed as a package and classes were derived from its classes. But
 for my own convenience, the essential code was copied, reduced and modified to suit
 my structure (which is not perfect or final, yet). The files, which contain code from 
 [keras-rl](https://github.com/keras-rl/keras-rl), begin with `# @keras-rl` and the 
-spots are respectively marked with comments. This code falls under the following license:
+spots are respectively marked with comments. These code bits falls under the following license:
 [https://github.com/Frawak/keras-rl/blob/master/LICENSE](https://github.com/Frawak/keras-rl/blob/master/LICENSE).
 
 A big help (also for many participants of the challenge) was [ctmakro](https://github.com/ctmakro/stanford-osrl). 
