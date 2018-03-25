@@ -75,7 +75,7 @@ it was installed as a package and classes were derived from its classes. But
 for my own convenience, the essential code was copied, reduced and modified to suit
 my structure (which is not perfect or final, yet). The files, which contain code from 
 [keras-rl](https://github.com/keras-rl/keras-rl), begin with `# @keras-rl` and the 
-spots are respectively marked with comments. These code bits falls under the following license:
+spots are respectively marked with comments. These code bits fall under the following license:
 [https://github.com/Frawak/keras-rl/blob/master/LICENSE](https://github.com/Frawak/keras-rl/blob/master/LICENSE).
 
 A big help (also for many participants of the challenge) was [ctmakro](https://github.com/ctmakro/stanford-osrl). 
