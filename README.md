@@ -58,7 +58,7 @@ Make sure to install tensorflow for CPUs and not GPUs.
 6) Install some additional packages for plotting:
 ```
 conda install matplotlib
-conda instal h5py
+conda install h5py
 ```
 
 Be aware that I only ran the `trainCollective.py` script on a Linux server. I do
@@ -107,6 +107,12 @@ You will need `2+n, n>=1` cores in order to run `trainCollective.py`.
 * 1 for the training process (main process)
 * n Explorer (actor/worker)
 * 1 Tester 
+
+Watch [this video](https://www.youtube.com/watch?v=9WXPwX7TRZI) for an example
+of a training session progress (in the osim running environment). 
+Obstacles were disabled. The video shows the policies after each 1000th 
+exchange between the Explorers and the main process. The third checkpoint was 
+reached by approx. 5 to 6 hours with 10 Explorers. 
 
 ## Current ToDo list
 
