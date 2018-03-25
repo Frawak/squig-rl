@@ -1,0 +1,8 @@
+out.log
+err.log
+example.png
+example_actor.h5f
+example_critic.h5f
+*.pyc
+*.png
+*.mp4
