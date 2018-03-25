@@ -1,4 +1,5 @@
 # @keras-rl
+# https://github.com/Frawak/keras-rl/blob/master/LICENSE
 
 from __future__ import division
 import os

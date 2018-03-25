@@ -1,4 +1,5 @@
 # @keras-rl
+# https://github.com/Frawak/keras-rl/blob/master/LICENSE
 #File copied from keras-rl and reduced
 #https://github.com/keras-rl/keras-rl/blob/3dcd547f8f274f04fe11e813f52ceaed8987c90a/rl/util.py
 

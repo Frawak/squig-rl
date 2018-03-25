@@ -1,4 +1,5 @@
 # @keras-rl
+# https://github.com/Frawak/keras-rl/blob/master/LICENSE
 #file moved from keras-rl
 #https://github.com/keras-rl/keras-rl/blob/4ce0cc4d1f9f686fefc2ee77f47c380b529426d7/rl/memory.py
 
