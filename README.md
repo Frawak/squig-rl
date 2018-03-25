@@ -3,17 +3,17 @@
 This repository resulted from my dive in Reinforcement Learning on the base of 
 the Learning-to-Run challenge of [osim-rl](https://github.com/stanfordnmbl/osim-rl).
 
-And I intend to further build on it and extend this repo.
+And I intend to further build on and extend this repo.
 
 Why "Squig"? Well, the osim running environment showed a armless bipedal walker
-and I only know one such creature...
+and I only know of one such creature...
 
 Make sure to read the [acknowledgement section](https://github.com/Frawak/squig-rl/blob/master/README.md#acknowledgement).
 
 ## Setup
 
 The setup is similar to the [osim-rl](https://github.com/stanfordnmbl/osim-rl). 
-There just some adjustments:
+There are just some adjustments:
 
 1) Setup conda: Either download [anaconda](https://www.anaconda.com/download/) or 
 install [miniconda](https://conda.io/miniconda.html).
@@ -33,27 +33,25 @@ activate [Env Name]
 conda install -c conda-forge lapack git
 pip install git+https://github.com/stanfordnmbl/osim-rl.git@v1.5
 ```
-Currently, this repositories runs with the last release which is version 1.5.2
+Currently, this repositories runs with the last release, which is version 1.5.2,
 and not the work-in-progress version for the upcoming challenge.
 
 4) Next, keras and one of its backends has to be installed. I am more comfortable
 with tensorflow. Make sure to install the CPU version. This repository does not 
-contain anything which can be exploited with GPUs and the parallel algorithm 
-requires multiple cores. 
+contain anything (yet) which can be exploited with GPUs. Also, the parallel algorithm 
+requires multiple cores. Unless you have a bunch of graphics cards lying around...
 ```
 pip install tensorflow keras
 ```
 So far, it is not a crucial choice which backend you use but in the future, some
 backend implementations might be added.
 
-5) Rolling back to previous gym version:
+5) Roll back to a previous gym version:
 ```
 pip install gym==0.9.5
 ```
-...because the last osim release uses environment methods from gym before its
+...because the last osim release (v1.5) uses environment methods from gym before its
 clean-up (see [here](https://github.com/stanfordnmbl/osim-rl/issues/92)).
-
-Make sure to install tensorflow for CPUs and not GPUs.
 
 6) Install some additional packages for plotting:
 ```
@@ -67,7 +65,7 @@ are runnable on either OS.
 
 ## Acknowledgement
 
-First off, I have to thank organizers and participants of the [challenge](https://www.crowdai.org/challenges/nips-2017-learning-to-run).
+First off, I have to thank the organizers and participants of the [challenge](https://www.crowdai.org/challenges/nips-2017-learning-to-run).
 The exchange throughout it provided an accelerated learning curve.
 
 As a code basis, I chose [keras-rl](https://github.com/keras-rl/keras-rl). At first, 
@@ -82,7 +80,7 @@ A big help (also for many participants of the challenge) was [ctmakro](https://g
 Some environment processing was inspired by him. 
 He also provides farming code with pyro4, so check it out.
 
-The parallelized approach was refined the one of [fgvbrt](https://github.com/fgvbrt/nips_rl).
+The parallelized approach was refined by the one of [fgvbrt](https://github.com/fgvbrt/nips_rl).
 I named it 'CollectiveDDPG'...
 
 ## A bit more info
@@ -112,7 +110,7 @@ Watch [this video](https://www.youtube.com/watch?v=9WXPwX7TRZI) for an example
 of a training session progress (in the osim running environment). 
 Obstacles were disabled. The video shows the policies after each 1000th 
 exchange between the Explorers and the main process. The third checkpoint was 
-reached by approx. 5 to 6 hours with 10 Explorers. 
+reached after approx. 5 to 6 hours with 10 Explorers. 
 
 ## Current ToDo list
 
