@@ -6,7 +6,7 @@ import argparse
 parser = argparse.ArgumentParser(description='Test neural net motor controller')
 parser.add_argument('--episodes', dest='episodes', action='store', default=1, type=int) #number of episode to be tested
 parser.add_argument('--dir', dest='dir', action='store', default="../temp/")
-parser.add_argument('--model', dest='model', action='store', default="example.h5f")     #weights
+parser.add_argument('--model', dest='model', action='store', default="example.h5f")     #filename with weights to be tested
 parser.add_argument('--vis', dest='visualize', action='store_true', default=False)
 args = parser.parse_args()
 

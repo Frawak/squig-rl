@@ -6,7 +6,10 @@ import os
 import warnings
 
 import numpy as np
-import Queue
+try:
+    import Queue
+except ModuleNotFoundError:
+    import queue as Queue
 
 import keras.backend as K
 import keras.optimizers as optimizers
@@ -318,7 +321,7 @@ class CollectiveDDPG(CustomDDPG):
                                 'reward_max' : np.max(log_episodeReward),
                                 'environmentInfo' : log_info
                                 }
-                        callbacks.on_episode_end(epoch/self.EPOCH_PERIOD, epoch_logs)
+                        callbacks.on_episode_end(int(epoch/self.EPOCH_PERIOD), epoch_logs)
                         log_episodeReward = []
                         log_info = []
                 except Queue.Empty:

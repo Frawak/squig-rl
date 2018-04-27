@@ -6,9 +6,9 @@ import os
 
 parser = argparse.ArgumentParser(description='Test checkpoints of neural net motor controller')
 parser.add_argument('--dir', dest='dir', action='store', default="../temp/")
-parser.add_argument('--model', dest='model', action='store', default="example.h5f")
-parser.add_argument('--start', dest='start', action='store', default=1, type=int) #First episode-number - interval
-parser.add_argument('--interval', dest='interval', action='store', default=100, type=int)
+parser.add_argument('--model', dest='model', action='store', default="example.h5f")         #general model name
+parser.add_argument('--start', dest='start', action='store', default=1, type=int)           #First episode-number - args.interval
+parser.add_argument('--interval', dest='interval', action='store', default=100, type=int)   #checkpoint interval
 parser.add_argument('--obs', dest='obs', action='store_true', default=False)
 parser.add_argument('--vis', dest='visualize', action='store_true', default=False)
 args = parser.parse_args()
