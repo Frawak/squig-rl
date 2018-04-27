@@ -121,6 +121,7 @@ You will need `2+n, n>=1` cores in order to run `trainCollective.py`.
 * 1 for the training process (main process)
 * n Explorer (actor/worker)
 * 1 Tester 
+
 But be aware that one process could utilize multiple cores, e.g. the training process through tensorflow.
 
 Watch [this video](https://www.youtube.com/watch?v=9WXPwX7TRZI) for an example
