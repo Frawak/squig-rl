@@ -13,14 +13,25 @@ Make sure to read the [acknowledgement section](https://github.com/Frawak/squig-
 ## Setup
 
 The setup is similar to the [osim-rl](https://github.com/stanfordnmbl/osim-rl). 
-There are just some adjustments:
+There are just some adjustments. 
 
 1) Setup conda: Either download [anaconda](https://www.anaconda.com/download/) or 
 install [miniconda](https://conda.io/miniconda.html).
 
-2) Create a conda environment and activate it:
+2) Create a conda environment and activate it.
+
+If you want to run osim, use Python 2.7 and the following channels:
 ```
 conda create -n [Env Name] -c kidzik opensim git python=2.7
+source activate [Env Name]
+```
+This will be updated when a new osim version is released. Currently, they are preparing for a new challenge.
+
+If you want to run [gym](https://github.com/openai/gym) or [roboschool](https://github.com/openai/roboschool), 
+use Python 3.6. If you want to use Python 3.5, you have to adjust the `Queue` import
+in [customDDPG.py](https://github.com/Frawak/squig-rl/blob/master/source/agents/customDDPG.py).
+```
+conda create -n [Env Name] -c git python=3.6
 source activate [Env Name]
 ```
 Activation under windows:
@@ -28,7 +39,7 @@ Activation under windows:
 activate [Env Name]
 ```
 
-3) Get the osim reinforcement learning environment:
+3) If you want to use Osim, get its reinforcement learning environment:
 ```
 conda install -c conda-forge lapack git
 pip install git+https://github.com/stanfordnmbl/osim-rl.git@v1.5
@@ -46,18 +57,23 @@ pip install tensorflow keras
 So far, it is not a crucial choice which backend you use but in the future, some
 backend implementations might be added.
 
-5) Roll back to a previous gym version:
+5) For Osim: Roll back to a previous gym version:
 ```
 pip install gym==0.9.5
 ```
 ...because the last osim release (v1.5) uses environment methods from gym before its
 clean-up (see [here](https://github.com/stanfordnmbl/osim-rl/issues/92)).
 
+For Gym or Roboschool, use a more current version.
+
 6) Install some additional packages for plotting:
 ```
 conda install matplotlib
 conda install h5py
 ```
+
+7) If you want to run Roboschool, you have to be more careful with the installation.
+Refer: https://github.com/Frawak/squig-rl/blob/master/envs/roboschool.md
 
 Be aware that I only ran the `trainCollective.py` script on a Linux server. I do
 not know if the parallelization is running under Windows as well. The other scripts
@@ -105,6 +121,7 @@ You will need `2+n, n>=1` cores in order to run `trainCollective.py`.
 * 1 for the training process (main process)
 * n Explorer (actor/worker)
 * 1 Tester 
+But be aware that one process could utilize multiple cores, e.g. the training process through tensorflow.
 
 Watch [this video](https://www.youtube.com/watch?v=9WXPwX7TRZI) for an example
 of a training session progress (in the osim running environment). 
@@ -114,7 +131,6 @@ reached after approx. 5 to 6 hours with 10 Explorers.
 
 ## Current ToDo list
 
-* Python 3 conversion
 * Refine parameter noise (by annealing the probability or introduce a measurement like [fgvbrt](https://github.com/fgvbrt/nips_rl))
 * Osim: Add obstacle information to the observation vector
 * Some code polishing
