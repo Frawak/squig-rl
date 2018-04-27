@@ -13,7 +13,7 @@ def runExplorer(ID, weightsQueue, expQueue, abort, weightNoiseProb=0.):
         env = getEnv()
         env.reset()
         nc = noiseConfig[ID % len(noiseConfig)]
-        noise = getNoise(nc, env.noutput)
+        noise = getNoise(nc, env.action_space.shape[0])
         
         exp = Explorer(ID=ID,env=env,weightNoiseProb=weightNoiseProb,noiseProcess=noise)
         exp.build()

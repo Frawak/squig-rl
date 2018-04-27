@@ -117,7 +117,7 @@ except:
 from plotLogs import plotCustom
 print("Plotting")
 plotCustom(destinyFile=args.dir + filename, logs=myLogger.history, 
-           abscissaKey='duration', keys=['distance'],
+           abscissaKey='duration', keys=['reward'],
            xLabel='Duration', yLabel='Distance')
 
 print("FINISHED")

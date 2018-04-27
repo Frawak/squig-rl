@@ -1,6 +1,6 @@
 import numpy as np
 '''
-Agent with just the actor network and feed-forwarding information
+Agent with just the actor network and feed-forwarding information 
 which executes actions without noise.
 '''  
 class TestActor(object):
@@ -24,13 +24,16 @@ class TestActor(object):
                 np.clip(action, env.action_space.low, env.action_space.high)
                 
                 obs, rew, done, info = env.step(action)
+                
                 episodeReward += rew
                 state = obs
                 step += 1
                 
                 obs_log.append(obs)
                 
-            print("episode "+str(i+1)+", reward: "+str(episodeReward)+", distance: "+str(env.getDistanceTravelled()))
+            print("episode "+str(i+1)+", steps: "+str(step)+", reward: "+str(episodeReward))
+            # TODO: env info generalize
+            #+", distance: "+str(env.getDistanceTravelled()))
             
         return obs_log
             

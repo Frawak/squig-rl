@@ -1,11 +1,32 @@
 #### Environment ####
 #Import and configure the used environment here
-#Change the import and parameter list in order to do so
-from envs.diffEnv import diffEnv as env
+#Change the import and parameters in getEnv in order to do so
+
+ENV_TAG='ROBOSCHOOL'
+
+if ENV_TAG=='OSIM':
+    from envs.diffEnv import diffEnv as env
+if ENV_TAG=='GYM' or 'ROBOSCHOOL':
+    import gym
+    #from gym import wrappers
+    from envs.gymWrapper import gymVisualizer as gv
+if ENV_TAG=='ROBOSCHOOL':
+    import roboschool
 
 def getEnv(visualize=False):
-    e = env(difficulty=0, visualize=visualize, rewardMode=15, rewardScale=1.,
-            action_repetition=3, pel_min=0.6)
+    if ENV_TAG=='OSIM':
+        e = env(difficulty=0, visualize=visualize, rewardMode=15, rewardScale=1.,
+                action_repetition=3, pel_min=0.6)
+    elif ENV_TAG=='GYM' or 'ROBOSCHOOL':
+        gym.undo_logger_setup()
+        e = gym.make('RoboschoolInvertedPendulum-v1')
+        #e.seed(0)
+        if visualize:
+            e = gv(e)        
+    else:
+        e = None
+        raise RuntimeError('No valid environment selected!')
+    
     return e
 
 #### Noise ####
@@ -76,6 +97,15 @@ def getActor(env):
         actor.add(LeakyReLU(alpha=0.2))
         actor.add(Dense(numActions))
         actor.add(Activation('sigmoid'))
+    elif networkID == 4:
+        actor = Sequential()
+        actor.add(Flatten(input_shape=(1,) + env.observation_space.shape))
+        actor.add(LayerNormDense(16))
+        actor.add(Activation('selu'))
+        actor.add(LayerNormDense(16))
+        actor.add(Activation('selu'))
+        actor.add(Dense(numActions))
+        actor.add(Activation('linear'))
     else:
         raise Exception('NO EXISTING DESIGN CHOSEN')
         return None
@@ -118,6 +148,17 @@ def getCritic(env):
         x = LeakyReLU(alpha=0.2)(x)
         x = LayerNormDense(128)(x)
         x = LeakyReLU(alpha=0.2)(x)
+        x = Dense(1)(x)
+        x = Activation('linear')(x)
+        critic = Model(inputs=[action_input, observation_input], outputs=x)
+    elif networkID == 4:
+        x = LayerNormDense(16)(flattened_observation)
+        x = Activation('selu')(x)
+        x = concatenate([x, action_input])
+        x = LayerNormDense(16)(x)
+        x = Activation('selu')(x)
+        x = LayerNormDense(16)(x)
+        x = Activation('selu')(x)
         x = Dense(1)(x)
         x = Activation('linear')(x)
         critic = Model(inputs=[action_input, observation_input], outputs=x)

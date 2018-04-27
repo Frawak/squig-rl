@@ -2,8 +2,9 @@ import os
 
 import numpy as np
 
-from memory import SequentialMemory
+from source.memory import SequentialMemory
 
+#child class of keras-rl SequentialMemory
 #just adds methods to save or load memory
 class sm(SequentialMemory):
     def __init__(self, limit, **kwargs):
